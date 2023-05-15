@@ -21,5 +21,5 @@ class CommentSerializer(serializers.ModelSerializer):
         ]
 
 
-class CommentDetailSerializer(serializers.CommentSerializer):
+class CommentDetailSerializer(serializers.ModelSerializer):
     post = serializers.ReadOnlyField(source='post.id')
