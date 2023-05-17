@@ -1,5 +1,5 @@
 from django.db import IntegrityError
-rest_framework import serializers
+from rest_framework import serializers
 from .models import Follower
 
 
@@ -11,7 +11,7 @@ class FollowerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Follower
         fields = [
-            'id', 'owner', 'is_owner', 'created_at', 'followed', 'followed_name'
+            'id', 'owner', 'created_at', 'followed', 'followed_name'
             ]
 
     def create(self, validated_data):
