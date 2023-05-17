@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import Profile
-from followers.models import Follower
+# from followers.models import Follower
 
 
 class ProfileSerializer(serializers.ModelSerializer):
@@ -18,6 +18,7 @@ class ProfileSerializer(serializers.ModelSerializer):
             following = Follower.objects.filter(
                 owner=user, followed=obj.owner
             ).first()
+            print(following)
 
     class Meta:
         model = Profile
