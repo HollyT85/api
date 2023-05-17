@@ -1,6 +1,6 @@
 asgiref==3.6.0
 cloudinary==1.25.0
-dj-rest-auth==4.0.0
+dj-rest-auth==2.1.9
 Django==3.2
 django-allauth==0.54.0
 django-cloudinary-storage==0.3.0
