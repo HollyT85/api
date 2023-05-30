@@ -61,14 +61,14 @@ REST_AUTH_SERIALIZERS = {
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEV' in os.environ
 
 ALLOWED_HOSTS = ['localhost', os.environ.get('ALLOWED_HOST')]
 
-CSRF_TRUSTED_ORIGINS = ['https://8000-hollyt85-api-s17ga60qnwc.ws-eu97.gitpod.io/', 'https://drf-api-holly.herokuapp.com/']
+CSRF_TRUSTED_ORIGINS = ['https://8000-hollyt85-api-s17ga60qnwc.ws-eu98.gitpod.io', 'https://drf-api-holly.herokuapp.com']
 
 
 # Application definition
