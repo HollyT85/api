@@ -61,7 +61,7 @@ REST_AUTH_SERIALIZERS = {
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = DEBUG = 'DEV' in os.environ
+DEBUG = 'DEV' in os.environ
 
 ALLOWED_HOSTS = ['localhost', os.environ.get('ALLOWED_HOST'), '8000-hollyt85-api-s17ga60qnwc.ws-eu99.gitpod.io']
 
@@ -153,11 +153,12 @@ if 'DEV' in os.environ:
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
+    print('connected')
 else:
     DATABASES = {
         'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
     }
-    print('connected')
+    
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
