@@ -45,6 +45,7 @@ REST_USE_JWT = True
 JWT_AUTH_SECURE = True
 JWT_AUTH_COOKIE = 'my-app-auth'
 JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'
+JWT_AUTH_SAMESITE = 'None'
 
 REST_AUTH_SERIALIZERS = {
     'USER_DETAILS_SERIALIZER': 'api.serializers.CurrentUserSerializer'
@@ -61,9 +62,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', os.environ.get('ALLOWED_HOST'), '8000-hollyt85-api-s17ga60qnwc.ws-eu99.gitpod.io']
 
-CSRF_TRUSTED_ORIGINS = ['8000-hollyt85-api-s17ga60qnwc.ws-eu99.gitpod.io', 'https://drf-api-holly.herokuapp.com/']
+CSRF_TRUSTED_ORIGINS = ['https://8000-hollyt85-api-s17ga60qnwc.ws-eu99.gitpod.io', 'https://drf-api-holly.herokuapp.com']
 
-JWT_AUTH_SAMESITE = 'None'
+# Access-Control-Allow-Origin: 'https://3000-hollyt85-momento-uiiaj6bovye.ws-eu99.gitpod.io/'
 
 # Application definition
 
@@ -153,6 +154,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+if 'CLIENT_ORIGIN' in os.environ:
+    CORS_ALLOWED_ORIGINS = [
+        os.environ.get('CLIENT_ORIGIN')
+    ]
+
 if 'CLIENT_ORIGIN_DEV' in os.environ:
     extracted_url = re.match(r'^.+-', os.environ.get('CLIENT_ORIGIN_DEV', ''), re.IGNORECASE).group(0)
     CORS_ALLOWED_ORIGIN_REGEXES = [
@@ -183,3 +189,24 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+        },
+    },
+    "root": {
+        "handlers": ["console"],
+        "level": "WARNING",
+    },
+    "loggers": {
+        "django": {
+            "handlers": ["console"],
+            "level": os.getenv("DJANGO_LOG_LEVEL", "INFO"),
+            "propagate": False,
+        },
+    },
+}
