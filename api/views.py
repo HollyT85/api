@@ -6,12 +6,12 @@ from .settings import (
 )
 
 
-
 @api_view()
 def root_route(request):
     return Response({
-        'message': 'Working - It Is Working!'
+        "message": "Welcome to my drf API!"
     })
+
 
 # dj-rest-auth logout view fix
 @api_view(['POST'])
