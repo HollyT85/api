@@ -63,9 +63,9 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEV' in os.environ
 
-ALLOWED_HOSTS = ['localhost', os.environ.get('ALLOWED_HOST'), '8000-hollyt85-api-s17ga60qnwc.ws-eu99.gitpod.io']
+ALLOWED_HOSTS = ['localhost', os.environ.get('ALLOWED_HOST'), '*']
 
-CSRF_TRUSTED_ORIGINS = ['https://8000-hollyt85-api-s17ga60qnwc.ws-eu99.gitpod.io', 'https://drf-api-holly.herokuapp.com']
+CSRF_TRUSTED_ORIGINS = ['https://8000-hollyt85-api-s17ga60qnwc.ws-eu99.gitpod.io', 'https://drf-api-holly.herokuapp.com', 'https://8000-hollyt85-api-s17ga60qnwc.ws-eu100.gitpod.io', '*']
 
 # Access-Control-Allow-Origin: 'https://3000-hollyt85-momento-uiiaj6bovye.ws-eu99.gitpod.io/'
 
