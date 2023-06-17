@@ -1,21 +1,23 @@
 from rest_framework import generics, permissions
 from api.permissions import IsOwnerOrReadOnly
-from .models import Follower
-from .serializers import FollowerSerializer
+from likes.models import Like
+from likes.serializers import LikeSerializer
 
 
-class FollowerList(generics.ListCreateAPIView):
-
+class LikeList(generics.ListCreateAPIView):
+    """
+    List likes or create a like if logged in.
+    """
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    queryset = Follower.objects.all()
-    serializer_class = FollowerSerializer
+    serializer_class = LikeSerializer
+    queryset = Like.objects.all()
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
 
-class FollowerDetail(generics.RetrieveDestroyAPIView):
+class LikeDetail(generics.RetrieveDestroyAPIView):
 
     permission_classes = [IsOwnerOrReadOnly]
-    queryset = Follower.objects.all()
-    serializer_class = FollowerSerializer
+    serializer_class = LikeSerializer
+    queryset = Like.objects.all()
